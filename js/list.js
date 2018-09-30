@@ -90,7 +90,9 @@ cart model= {
     quantidade:
 }
 */
+var total = 0;
 var cart = new Array();
+var venda = new Array();
 var quantidade = 0;
 
 $(document).ready(function() {
@@ -195,7 +197,7 @@ function openModal(i){
                 '</div>'+ 
                     '<div class="alignModalButtons">'+
                         '<button type="button" class="btn btn-secondary" OnClick="addItemToCart('+i+')" >Adicionar</button>'+
-                        '<button type="button" class="btn btn-primary" OnClick="createCheckoutModal()">Ir para o carrinho</button>'+
+                        '<button type="button" class="btn btn-primary" OnClick="addItemToCart('+i+'); createCheckoutModal();">Adicionar e finalizar</button>'+
                     '</div>'+
                 '</div>'+
             '</div>'+    
@@ -206,7 +208,7 @@ $('#mainModal').modal('show');
 }
 
 function addItemToCart(i){
-    debugger
+    
     if (quantidade == 0){
         $('#invalidQuantityAlert').removeAttr('hidden');
         setTimeout(function(){
@@ -260,7 +262,7 @@ function createCheckoutModal(){
         $('#cartModalContent').remove();
     }
     $('#cartModal').append(
-        '<div class="modal-dialog" role="document" id="cartModalContent">'+
+        '<div class="modal-dialog modal-lg" role="document" id="cartModalContent">'+
                 '<div class="modal-content">'+
                     '<div class="modal-header">'+
                         '<h5 class="modal-title" id="exampleModalLabel">Carrinho</h5>'+
@@ -269,12 +271,7 @@ function createCheckoutModal(){
                         '</button>'+
                     '</div>'+
                     '<div class="modal-body">'+
-                        '<form>'+
-                            '<div class="form-group">'+
-                                '<label for="exampleInputEmail1">Email address</label>'+
-                                '<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">'+
-                                '<small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>'+
-                            '</div>'+
+                        '<form id="cartForm">'+
                             '<div class="form-group">'+
                                 '<div class="alignModalButtons">'+
                                     '<a class="btn btn-outline-info btn-sm" data-toggle="collapse" href="#cartProductTable" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Mostrar produtos</a>'+
@@ -290,6 +287,7 @@ function createCheckoutModal(){
                                                     '<th scope="col">Preço</th>'+
                                                     '<th scope="col">Quantidade</th>'+
                                                     '<th scope="col">Subtotal</th>'+
+                                                    '<th scope="col">Total</th>'+
                                                 '</tr>'+
                                             '</thead>'+
                                             '<tbody id="productTableBody">'+
@@ -299,19 +297,76 @@ function createCheckoutModal(){
                                 '</div>'+
                             '</div>'+
                             '<div class="form-group">'+
-                                '<label for="exampleInputPassword1">Password</label>'+
-                                '<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">'+
+                                '<div class="m-1">'+
+                                    '<p>Formas de pagamento</p'+
+                                '</div>'+
+                                '<div class="form-check">'+
+                                    '<label class="form-check-label">'+
+                                        '<input class="form-check-input" type="radio" name="boleto" id="boleto" value="boleto" checked>'+
+                                            'Boleto'+
+                                    '</label>'+
+                                '</div>'+
+                                '<div class="form-check disabledRadio">'+
+                                    '<label class="form-check-label">'+
+                                        '<input class="form-check-input" type="radio" name="credito" id="credito" value="credito" disabled>'+
+                                            'Cartão de Crédito'+
+                                    '</label>'+
+                                '</div>'+
+                                '<div class="form-check disabledRadio">'+
+                                    '<label class="form-check-label">'+
+                                        '<input class="form-check-input" type="radio" name="debito" id="debito" value="debito" disabled>'+
+                                            'Cartão de Débito'+
+                                    '</label>'+
+                                '</div>'+
+                                '<div class="input-group mt-2">'+
+                                    '<div class="input-group-prepend">'+
+                                        '<span class="input-group-text">Email</span>'+
+                                     '</div>'+
+                                    '<input type="email" class="form-control input-sm" id="inputEmail" aria-describedby="dataHelp" placeholder="Insira seu email">'+
+                                '</div>'+
+                                '<div class="input-group mt-2">'+
+                                    '<div class="input-group-prepend">'+
+                                        '<span class="input-group-text">Senha</span>'+
+                                     '</div>'+
+                                     '<input type="password" class="form-control input-sm" id="inputPassword" placeholder="Senha">'+
+                                '</div>'+
+                                '<div class="input-group mt-2">'+
+                                    '<div class="input-group-prepend">'+
+                                        '<span class="input-group-text">:)</span>'+
+                                     '</div>'+
+                                     '<input type="password" class="form-control input-sm" id="inputRepeatPassword" placeholder="Repita a senha">'+
+                                '</div>'+
+
+                                    '<small id="dataHelp" class="form-text text-muted">Seus dados estão seguros conosco :)</small>'+
+                                    ''+
+                            '<div class="input-group mt-2">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text">Nome</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control input-sm" id="name" aria-describedby="" placeholder="Insira seu nome">'+
+                            '</div>'+    
+                            '<div class="input-group mt-2">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text">Endereço</span>'+
+                                '</div>'+
+                                '<input type="text" aria-label="rua" class="form-control" id="rua" placeholder="Rua, avenida...">'+
+                                '<input type="number" aria-label="numero" class="form-control" id="numero" placeholder="número">'+
+                                '<input type="text" aria-label="complemento" class="form-control" id="complemento" placeholder="Complemento">'+
                             '</div>'+
-                            '<div class="form-group form-check">'+
-                                '<input type="checkbox" class="form-check-input" id="exampleCheck1">'+
-                                '<label class="form-check-label" for="exampleCheck1">Check me out</label>'+
+                            '<div class="input-group mt-2">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text">CEP</span>'+
+                                '</div>'+
+                                '<input type="text" aria-label="rua" class="form-control" id="cep" placeholder="Insira seu cep...">'+
                             '</div>'+
-                                '<button type="submit" class="btn btn-primary">Submit</button>'+
-                            '</form>'+
-                        '</div>'+
-                    '<div class="modal-footer">'+
-                        '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
-                        '<button type="button" class="btn btn-primary">Save changes</button>'+
+
+                            '</div>'+    
+                                
+                        '</form>'+
+                    '</div>'+
+                    '<div class="modal-footer alignModalButtons">'+
+                        '<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fechar</button>'+
+                        '<button type="button" class="btn btn-outline-success" OnClick="finishCartForGood()">Finalizar venda</button>'+
                     '</div>'+
                 '</div>'+
             '</div>'
@@ -344,16 +399,83 @@ function createTableBody(){
         $('#cartProductTable').append(bodyComponent);
         return;
     }
+    
     for(var i = 0; i < cart.length; i++){
-        var price = parseFloat(cart[i].produto.price.replace(',','.'));
+        
+        var price = parseFloat(cart[i].produto.price.replace(',','.')).toFixed(2);
+        var formattedPrice =  (price*parseFloat(cart[i].quantidade));
+        var priceString = formattedPrice.toFixed(2).replace('.',',');
+        total = total + formattedPrice;
+
         bodyComponent.push(
             '<tr>'+
                 '<td scope="row">'+cart[i].produto.name+'</td>'+
                 '<td>'+cart[i].produto.price+'</td>'+
                 '<td>'+cart[i].quantidade+'</td>'+
-                '<td>'+price*cart[i].quantidade+'</td>'+
+                '<td>'+priceString+'</td>'+
             '</tr>'
         );
+        if (i + 1 == cart.length){
+            var priceStringTotal = total.toFixed(2).replace('.',',');
+            bodyComponent.push(
+                '<tr>'+
+                '<td scope="row"></td>'+
+                '<td></td>'+
+                '<td></td>'+
+                '<td></td>'+
+                '<td>'+priceStringTotal+'</td>'+
+                '</tr>'
+                );  
+            }
+        }
+        $('#productTableBody').append(bodyComponent);
     }
-    $('#productTableBody').append(bodyComponent);
+    
+    
+function finishCartForGood(){
+
+    var shoppingCart = {
+        produtos: this.cart,
+        pagamento: $('#boleto')[0].value,
+        total: total
+    };
+    
+    var user = {
+                usuario: {
+                nome: $('#name')[0].value,
+                email: $('#inputEmail')[0].value,
+                senha: $('#inputPassword')[0].value,
+                endereço: {
+                        cep: $('#cep')[0].value,
+                        rua: $('#rua')[0].value,
+                        numero: $('#numero')[0].value,
+                        complemento: $('#complemento')[0].value
+                }
+            }
+        };
+        venda.push({
+            venda: shoppingCart,
+            user: user
+        });
+        console.log(venda);
+        $('#cartModal').modal('hide');
+        $('#loaderModal').modal('show');
+        handleLoader();
+}
+function handleLoader(){
+
+    setTimeout(function(){
+        $("#holdOn").fadeOut();
+    },900); 
+    
+    setTimeout(function(){
+        $("#allOk").fadeIn();
+    },2000); 
+
+    setTimeout(function(){
+        $("#loaderModal").modal('hide');
+    },4000);
+    setTimeout(function(){
+        $("#loaderModal").remove();
+    },6000);
 }

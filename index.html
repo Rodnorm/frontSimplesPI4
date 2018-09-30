@@ -10,11 +10,20 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
         >
+<!--
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous">
         </script>
+    -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous">
@@ -141,6 +150,23 @@
             <div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="productModal" aria-hidden="true"></div>
             <!-- Modal Cart with selected items-->
             <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="cartModal" aria-hidden="true"></div>
+            <div class="modal fade" id="loaderModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="loaderModal" aria-hidden="true">
+                    <div class="modal-dialog modal-sm" role="document" id="modalContent">
+                        <div class="modal-content loaderModalClass">
+                            <div class="modal-body">
+                                <div class="divLoader">
+                                    <img class="loader" src="./img/icons/loader.gif">
+                                </div>
+                                <div class="alert alert-success" role="alert" id="holdOn">
+                                    Aguarde um momento..
+                                </div>
+                                <div class="alert alert-primary alertHold" role="alert" id="allOk">
+                                    Pronto, tudo certo! :)
+                                </div>
+                            </div>
+                        </div>
+                    </div>       
+            </div>
         </main>
     </body>
 </html>
