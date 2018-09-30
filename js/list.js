@@ -186,19 +186,19 @@ function openModal(i){
                     '</div>'+
                 '</div>'+
            '</div>'+
+           '<div class="input-group">'+
+               '<div class="input-group-prepend">'+
+                   '<span class="input-group-text autofocus" id="basic-addon1">Quantidade</span>'+
+               '</div>'+
+               '<input type="number" class="form-control" placeholder="00" aria-label="quantity" OnKeyup="addQuantity(event)" aria-describedby="basic-addon1">'+
+           '</div>'+ 
+               '<div class="alignModalButtons">'+
+                   '<button type="button" class="btn btn-secondary" OnClick="addItemToCart('+i+')" >Adicionar</button>'+
+                   '<button type="button" class="btn btn-primary" OnClick="addItemToCart('+i+'); createCheckoutModal();">Adicionar e finalizar</button>'+
+               '</div>'+
+           '</div>'+
         '</div>' +
         '<div class="modal-footer">'+
-                '<div class="input-group">'+
-                    '<div class="input-group-prepend">'+
-                        '<span class="input-group-text autofocus" id="basic-addon1">Quantidade</span>'+
-                    '</div>'+
-                    '<input type="number" class="form-control" placeholder="00" aria-label="quantity" OnKeyup="addQuantity(event)" aria-describedby="basic-addon1">'+
-                '</div>'+ 
-                    '<div class="alignModalButtons">'+
-                        '<button type="button" class="btn btn-secondary" OnClick="addItemToCart('+i+')" >Adicionar</button>'+
-                        '<button type="button" class="btn btn-primary" OnClick="addItemToCart('+i+'); createCheckoutModal();">Adicionar e finalizar</button>'+
-                    '</div>'+
-                '</div>'+
         '</div>'+
     '</div>'
 );
@@ -264,7 +264,7 @@ function createCheckoutModal(){
                 '<div class="modal-content">'+
                     '<div class="modal-header">'+
                         '<h5 class="modal-title" id="exampleModalLabel">Carrinho</h5>'+
-                        '<button type="button" class="close" aria-label="Close">'+
+                        '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
                             '<span aria-hidden="true">&times;</span>'+
                         '</button>'+
                     '</div>'+
