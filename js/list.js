@@ -188,10 +188,9 @@ function openModal(i){
            '</div>'+
         '</div>' +
         '<div class="modal-footer">'+
-            '<div class="item col-xs-4 col-lg-12">'+
                 '<div class="input-group">'+
                     '<div class="input-group-prepend">'+
-                        '<span class="input-group-text" id="basic-addon1">Quantidade</span>'+
+                        '<span class="input-group-text autofocus" id="basic-addon1">Quantidade</span>'+
                     '</div>'+
                     '<input type="number" class="form-control" placeholder="00" aria-label="quantity" OnKeyup="addQuantity(event)" aria-describedby="basic-addon1">'+
                 '</div>'+ 
@@ -200,7 +199,6 @@ function openModal(i){
                         '<button type="button" class="btn btn-primary" OnClick="addItemToCart('+i+'); createCheckoutModal();">Adicionar e finalizar</button>'+
                     '</div>'+
                 '</div>'+
-            '</div>'+    
         '</div>'+
     '</div>'
 );
@@ -266,7 +264,7 @@ function createCheckoutModal(){
                 '<div class="modal-content">'+
                     '<div class="modal-header">'+
                         '<h5 class="modal-title" id="exampleModalLabel">Carrinho</h5>'+
-                        '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
+                        '<button type="button" class="close" aria-label="Close">'+
                             '<span aria-hidden="true">&times;</span>'+
                         '</button>'+
                     '</div>'+
@@ -458,6 +456,7 @@ function finishCartForGood(){
             user: user
         });
         console.log(venda);
+        debugger
         $('#cartModal').modal('hide');
         $('#loaderModal').modal('show');
         handleLoader();

@@ -22,8 +22,6 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
     </script>
-
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous">
@@ -35,8 +33,14 @@
         <link
             rel="stylesheet"
             href="./css/indexStyle.css">
+        <link
+            rel="stylesheet"
+            href="./css/modal/fs-modal.min.css">
         <script
             src="./js/list.js">
+        </script>
+        <script
+            src="./js/modal/fs-modal.min.js">
         </script>
         <link
             rel="stylesheet"
@@ -147,10 +151,10 @@
                 </nav>
             </div>
             <!-- Modal Add Product to Cart-->
-            <div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="productModal" aria-hidden="true"></div>
+            <div class="modal fade modal-fullscreen" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="productModal" aria-hidden="true"></div>
             <!-- Modal Cart with selected items-->
-            <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="cartModal" aria-hidden="true"></div>
-            <div class="modal fade" id="loaderModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="loaderModal" aria-hidden="true">
+            <div class="modal fade modal-fullscreen" id="cartModal" tabindex="-1" role="dialog" data-backdrop="static"  aria-labelledby="cartModal" aria-hidden="true"></div>
+            <div class="modal fade modal-fullscreen" id="loaderModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="loaderModal" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document" id="modalContent">
                         <div class="modal-content loaderModalClass">
                             <div class="modal-body">
