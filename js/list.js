@@ -153,7 +153,7 @@ function openModal(i){
     '<div class="modal-dialog" role="document" id="modalContent">'+
         '<div class="modal-content">'+
             '<div class="modal-header">'+
-            '<h5 class="modal-title" id="productModal">'+ productArray[i].name+'</h5>' +
+            '<h5 class="modal-title" id="productModal" data-mobile-text=":)">'+ productArray[i].name+'</h5>' +
             '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
                 '<span aria-hidden="true">&times;</span>'+
             '</button>'+
@@ -456,25 +456,28 @@ function finishCartForGood(){
             user: user
         });
         console.log(venda);
-        debugger
         $('#cartModal').modal('hide');
         $('#loaderModal').modal('show');
         handleLoader();
-}
-function handleLoader(){
+    }
+    function handleLoader(){
+        
+        setTimeout(function(){
+            $("#holdOn").fadeOut();
+        },900); 
+        
+        setTimeout(function(){
+            $("#allOk").fadeIn();
+        },2000); 
+        
+        setTimeout(function(){
+            $("#loaderModal").modal('hide');
+        },4000);
 
-    setTimeout(function(){
-        $("#holdOn").fadeOut();
-    },900); 
-    
-    setTimeout(function(){
-        $("#allOk").fadeIn();
-    },2000); 
-
-    setTimeout(function(){
-        $("#loaderModal").modal('hide');
-    },4000);
-    setTimeout(function(){
-        $("#loaderModal").remove();
-    },6000);
+        setTimeout(function(){
+            $("#allOk").fadeOut();
+        },8000);
+        setTimeout(function(){
+            $("#holdOn").fadeIn();
+        },9000); 
 }
