@@ -84,7 +84,12 @@ var productArray = new Array(
         alt: "Cubo mágido unicolor"
     }
 );
-
+/*
+cart model= {
+    produto: {produto},
+    quantidade:
+}
+*/
 var cart = new Array();
 var quantidade = 0;
 
@@ -190,7 +195,7 @@ function openModal(i){
                 '</div>'+ 
                     '<div class="alignModalButtons">'+
                         '<button type="button" class="btn btn-secondary" OnClick="addItemToCart('+i+')" >Adicionar</button>'+
-                        '<button type="button" class="btn btn-primary" data-dismiss="modal">Ir para o carrinho</button>'+
+                        '<button type="button" class="btn btn-primary" OnClick="createCheckoutModal()">Ir para o carrinho</button>'+
                     '</div>'+
                 '</div>'+
             '</div>'+    
@@ -240,4 +245,115 @@ function insertListItems(ul){
 
 function addQuantity(event){
     quantidade = event.target.value;
+}
+
+function createCheckoutModal(){
+    if($('#mainModal')){
+        setTimeout(function(){
+            $('#mainModal').modal('hide');
+        },200);
+    }else{
+        return;
+    }
+
+    if ($('#cartModalContent')){
+        $('#cartModalContent').remove();
+    }
+    $('#cartModal').append(
+        '<div class="modal-dialog" role="document" id="cartModalContent">'+
+                '<div class="modal-content">'+
+                    '<div class="modal-header">'+
+                        '<h5 class="modal-title" id="exampleModalLabel">Carrinho</h5>'+
+                        '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
+                            '<span aria-hidden="true">&times;</span>'+
+                        '</button>'+
+                    '</div>'+
+                    '<div class="modal-body">'+
+                        '<form>'+
+                            '<div class="form-group">'+
+                                '<label for="exampleInputEmail1">Email address</label>'+
+                                '<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">'+
+                                '<small id="emailHelp" class="form-text text-muted">Well never share your email with anyone else.</small>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<div class="alignModalButtons">'+
+                                    '<a class="btn btn-outline-info btn-sm" data-toggle="collapse" href="#cartProductTable" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Mostrar produtos</a>'+
+                                    '<button class="btn btn-sm btn-outline-danger" id="resetCart">Esvaziar carrinho</button>'+
+                                '</div>'+    
+                            '<div class="row">'+
+                                '<div class="col">'+
+                                    '<div class="collapse" id="cartProductTable">'+
+                                        '<table class="table table-hover table-sm" id="prodTableCart">'+
+                                            '<thead>'+
+                                                '<tr>'+
+                                                    '<th scope="col">Produto</th>'+
+                                                    '<th scope="col">Preço</th>'+
+                                                    '<th scope="col">Quantidade</th>'+
+                                                    '<th scope="col">Subtotal</th>'+
+                                                '</tr>'+
+                                            '</thead>'+
+                                            '<tbody id="productTableBody">'+
+                                            '</tbody>'+    
+                                        '</table>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="exampleInputPassword1">Password</label>'+
+                                '<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">'+
+                            '</div>'+
+                            '<div class="form-group form-check">'+
+                                '<input type="checkbox" class="form-check-input" id="exampleCheck1">'+
+                                '<label class="form-check-label" for="exampleCheck1">Check me out</label>'+
+                            '</div>'+
+                                '<button type="submit" class="btn btn-primary">Submit</button>'+
+                            '</form>'+
+                        '</div>'+
+                    '<div class="modal-footer">'+
+                        '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
+                        '<button type="button" class="btn btn-primary">Save changes</button>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'
+    );
+
+    createTableBody();
+
+    setTimeout(function(){
+        $('#cartModal').modal('show');
+    },500);
+}
+
+function resetCart(){
+    cart = [];
+    createTableBody();
+}
+
+function createTableBody(){
+    var bodyComponent = new Array();
+    
+    if (cart.length == 0){
+        bodyComponent.push(
+            '<div class="alert alert-info" role="alert">'+
+                'Adicione alguns itens primeiro :)'+
+            '</div>'
+        );
+        $('#productTableBody').remove();
+        $('#prodTableCart').remove();
+        $('#resetCart').remove();
+        $('#cartProductTable').append(bodyComponent);
+        return;
+    }
+    for(var i = 0; i < cart.length; i++){
+        var price = parseFloat(cart[i].produto.price.replace(',','.'));
+        bodyComponent.push(
+            '<tr>'+
+                '<td scope="row">'+cart[i].produto.name+'</td>'+
+                '<td>'+cart[i].produto.price+'</td>'+
+                '<td>'+cart[i].quantidade+'</td>'+
+                '<td>'+price*cart[i].quantidade+'</td>'+
+            '</tr>'
+        );
+    }
+    $('#productTableBody').append(bodyComponent);
 }
