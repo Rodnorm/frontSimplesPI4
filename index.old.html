@@ -1,0 +1,204 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Materialize-->
+        <!-- Compiled and minified CSS -->
+                 
+        <link 
+            rel="stylesheet" 
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        >
+<!--
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous">
+        </script>
+    -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous">
+        </script>
+        <link
+            rel="stylesheet"
+            href="./css/indexStyle.css">
+        <link
+            rel="stylesheet"
+            href="./css/modal/fs-modal.min.css">
+        <script
+            src="./js/list.js">
+        </script>
+        <script
+            src="./js/modal/fs-modal.min.js">
+        </script>
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+            crossorigin="anonymous">    
+        <title>Brinquedos</title>
+    </head>
+
+    <body data-spy="scroll" data-target="#mainNavbar" data-offset="50">
+        <div class="carouselMenu">
+            <div id="carousel" class="carouselRetractor">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <!--tamanho da imagem 1280x624-->
+                            <img class="d-block w-100" src="./img/img1.jpeg" alt="Estátua do super mário">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Miniaturas com preços ótimos!</h3>
+                                <a href="#" style="color:white">
+                                    <p>Dê uma olhada</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="./img/img2.jpeg" alt="Carrinho de brinquedo">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Miniaturas com preços ótimos!</h3>
+                                <a href="#" style="color:white">
+                                    <p>Dê uma olhada</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="./img/img3.jpeg" alt="Dados para alfabetização">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Miniaturas com preços ótimos!</h3>
+                                <a href="#" style="color:white">
+                                    <p>Dê uma olhada</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Próximo</span>
+                    </a>
+                </div>
+            </div>
+            <!-- <nav id="mainNavbar" class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Brinquedos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Colecionáveis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Livros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Esportes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Carrinho</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+            </nav> -->
+
+            <nav class="navbar navbar-dark navbar-expand-md bg-info" data-toggle="sticky-onscroll">
+                    <div class="container">
+                        <a class="navbar-brand" href="#">Brinquedos</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a href="#" class="nav-link">Brinquedos</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Colecionáves</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Livros</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Esportes</a></li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto mt-3">
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquise um produto" aria-label="Search">
+                                </form>
+                                <li class="nav-item">
+                                    <button class="btn btn-lg btn-outline-light" 
+                                    alt="Ir para o carrinho"
+                                    OnClick="createCheckoutModal()">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                    <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+        </div>
+    <main>
+        <div class="container">
+           
+            <div id="products" class="row view-group"></div>
+            <div class="centeredPagination" class="mt-1">
+                <nav>
+                    <ul class="pagination" id="pages">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Anterior</span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Próxima">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Próxima</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Modal Add Product to Cart-->
+            <div class="modal fade modal-fullscreen" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="productModal" aria-hidden="true"></div>
+            <!-- Modal Cart with selected items-->
+            <div class="modal fade modal-fullscreen" id="cartModal" tabindex="-1" role="dialog" data-backdrop="static"  aria-labelledby="cartModal" aria-hidden="true"></div>
+            <div class="modal fade modal-fullscreen" id="loaderModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="loaderModal" aria-hidden="true">
+                    <div class="modal-dialog modal-sm" role="document" id="modalContent">
+                        <div class="modal-content loaderModalClass">
+                            <div class="modal-body">
+                                <div class="divLoader">
+                                    <img class="loader" src="./img/icons/loader.gif">
+                                </div>
+                                <div class="alert alert-success" role="alert" id="holdOn">
+                                    Aguarde um momento..
+                                </div>
+                                <div class="alert alert-primary alertHold" role="alert" id="allOk">
+                                    Pronto, tudo certo! :)
+                                </div>
+                            </div>
+                        </div>
+                    </div>       
+            </div>
+        </main>
+    </body>
+</html>

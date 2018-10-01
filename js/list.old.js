@@ -1,10 +1,8 @@
 var productArray = new Array(
     {
         name: "Patinho de Borracha",
-        price: "19,90",        
+        price: "19,90",
         description: "Pato de borracha para você",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img1.jpeg",
         alt: "Patinho de borracha"
     },
@@ -12,8 +10,6 @@ var productArray = new Array(
         name: "Aviãozinho de papel",
         price: "199,90",
         description: "Modelo alienígena para você!",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img2.jpeg",
         alt: "Seu pai sabe fazer aviões de papel?"
     },
@@ -21,8 +17,6 @@ var productArray = new Array(
         name: "Cubo Mágico da Ursal",
         price: "00,00",
         description: "Todos os lados sao IGUAIS!!",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img3.jpg",
         alt: "Cubo mágido unicolor"
     },
@@ -30,8 +24,6 @@ var productArray = new Array(
         name: "Patinho de Borracha",
         price: "19,90",
         description: "Pato de borracha para você",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img1.jpeg",
         alt: "Patinho de borracha"
     },
@@ -39,8 +31,6 @@ var productArray = new Array(
         name: "Aviãozinho de papel",
         price: "199,90",
         description: "Modelo alienígena para você!",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img2.jpeg",
         alt: "Seu pai sabe fazer aviões de papel?"
     },
@@ -48,8 +38,6 @@ var productArray = new Array(
         name: "Cubo Mágico da Ursal",
         price: "00,00",
         description: "Todos os lados sao IGUAIS!!",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img3.jpg",
         alt: "Cubo mágido unicolor"
     },
@@ -57,8 +45,6 @@ var productArray = new Array(
         name: "Patinho de Borracha",
         price: "19,90",
         description: "Pato de borracha para você",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img1.jpeg",
         alt: "Patinho de borracha"
     },
@@ -66,8 +52,6 @@ var productArray = new Array(
         name: "Aviãozinho de papel",
         price: "199,90",
         description: "Modelo alienígena para você!",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img2.jpeg",
         alt: "Seu pai sabe fazer aviões de papel?"
     },
@@ -75,8 +59,6 @@ var productArray = new Array(
         name: "Cubo Mágico da Ursal",
         price: "00,00",
         description: "Todos os lados sao IGUAIS!!",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img3.jpg",
         alt: "Cubo mágido unicolor"
     },
@@ -84,8 +66,6 @@ var productArray = new Array(
         name: "Patinho de Borracha",
         price: "19,90",
         description: "Pato de borracha para você",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img1.jpeg",
         alt: "Patinho de borracha"
     },
@@ -93,8 +73,6 @@ var productArray = new Array(
         name: "Aviãozinho de papel",
         price: "199,90",
         description: "Modelo alienígena para você!",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img2.jpeg",
         alt: "Seu pai sabe fazer aviões de papel?"
     },
@@ -102,8 +80,6 @@ var productArray = new Array(
         name: "Cubo Mágico da Ursal",
         price: "00,00",
         description: "Todos os lados sao IGUAIS!!",
-        age: "livre",
-        carac: "15cm | 100g",
         src: "./img/products/img3.jpg",
         alt: "Cubo mágido unicolor"
     }
@@ -203,12 +179,6 @@ function openModal(i){
                         productArray[i].name+'</h4>'+
                     '<p class="group inner list-group-item-text">'+
                         productArray[i].description+
-                    '</p>'+
-                    '<p class="group inner list-group-item-text">'+
-                        '<strong>Faixa etária: </strong>' + productArray[i].age+
-                    '</p>'+
-                    '<p class="group inner list-group-item-text">'+
-                        '<strong>Características: </strong>'+productArray[i].carac+
                     '</p>'+
                     '<div class="row">'+
                         '<div class="col-xs-12 col-md-6">'+
@@ -405,7 +375,7 @@ function createCheckoutModal(){
                     '</div>'+
                     '<div class="modal-footer alignModalButtons">'+
                         '<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fechar</button>'+
-                        '<button type="button" class="btn btn-outline-success" OnClick="finishCartForGood()">Finalizar compra</button>'+
+                        '<button type="button" class="btn btn-outline-success" OnClick="finishCartForGood()">Finalizar venda</button>'+
                     '</div>'+
                 '</div>'+
             '</div>'
