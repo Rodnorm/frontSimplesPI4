@@ -497,6 +497,7 @@ function finishCartForGood(){
             user: user
         });
         console.log(venda);
+        debugger
         $('#cartModal').modal('hide');
         $('#loaderModal').modal('show');
         handleLoader();

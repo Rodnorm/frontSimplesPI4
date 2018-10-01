@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Materialize-->
@@ -137,12 +137,11 @@
                                 <li class="nav-item"><a href="#" class="nav-link">Esportes</a></li>
                             </ul>
                             <ul class="navbar-nav ml-auto mt-3">
-                                <form class="form-inline">
+                                <div class="form-inline">
                                     <input class="form-control mr-sm-2" type="search" placeholder="Pesquise um produto" aria-label="Search">
-                                </form>
+                                </div>
                                 <li class="nav-item">
                                     <button class="btn btn-lg btn-outline-light" 
-                                    alt="Ir para o carrinho"
                                     OnClick="createCheckoutModal()">
                                     <i class="fa fa-shopping-cart"></i>
                                     </button>
@@ -157,7 +156,7 @@
         <div class="container">
            
             <div id="products" class="row view-group"></div>
-            <div class="centeredPagination" class="mt-1">
+            <div class="centeredPagination mt-1">
                 <nav>
                     <ul class="pagination" id="pages">
                         <li class="page-item">
@@ -180,15 +179,15 @@
                 </nav>
             </div>
             <!-- Modal Add Product to Cart-->
-            <div class="modal fade modal-fullscreen" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="productModal" aria-hidden="true"></div>
+            <div class="modal fade modal-fullscreen" id="mainModal" tabindex="-1" role="dialog"  aria-hidden="true"></div>
             <!-- Modal Cart with selected items-->
             <div class="modal fade modal-fullscreen" id="cartModal" tabindex="-1" role="dialog" data-backdrop="static"  aria-labelledby="cartModal" aria-hidden="true"></div>
-            <div class="modal fade modal-fullscreen" id="loaderModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="loaderModal" aria-hidden="true">
+            <div class="modal fade modal-fullscreen" id="loaderModal" tabindex="-1" role="dialog" aria-labelledby="loaderModal" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document" id="modalContent">
                         <div class="modal-content loaderModalClass">
                             <div class="modal-body">
                                 <div class="divLoader">
-                                    <img class="loader" src="./img/icons/loader.gif">
+                                    <img class="loader" src="./img/icons/loader.gif" alt="Loader">
                                 </div>
                                 <div class="alert alert-success" role="alert" id="holdOn">
                                     Aguarde um momento..
@@ -200,6 +199,7 @@
                         </div>
                     </div>       
             </div>
+        </div>
         </main>
     </body>
 </html>
