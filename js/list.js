@@ -98,6 +98,7 @@ var quantidade = 0;
 $(document).ready(function() {
     ul = loadList(productArray);
     insertListItems(ul);
+    navbar();
     // setTimeout( addEvent(productArray), 5000);
     
 });
@@ -156,6 +157,9 @@ function openModal(i){
             '<h5 class="modal-title" id="productModal" data-mobile-text=":)">'+ productArray[i].name+'</h5>' +
             '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
                 '<span aria-hidden="true">&times;</span>'+
+            '</button>'+
+            '<button class="btn btn-danger" OnClick="closeModal(mainModal)">'+
+                '<i class="fa fa-chevron-left"></i>'+
             '</button>'+
         '</div>'+
         '<div class="modal-body">'+
@@ -267,6 +271,9 @@ function createCheckoutModal(){
                         '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
                             '<span aria-hidden="true">&times;</span>'+
                         '</button>'+
+                        '<button class="btn btn-danger" OnClick="closeModal(cartModal)">'+
+                        '<i class="fa fa-chevron-left"></i>'+
+                    '</button>'+
                     '</div>'+
                     '<div class="modal-body">'+
                         '<form id="cartForm">'+
@@ -294,71 +301,75 @@ function createCheckoutModal(){
                                     '</div>'+
                                 '</div>'+
                             '</div>'+
-                            '<div class="form-group">'+
-                                '<div class="m-1">'+
-                                    '<p>Formas de pagamento</p'+
-                                '</div>'+
-                                '<div class="form-check">'+
-                                    '<label class="form-check-label">'+
-                                        '<input class="form-check-input" type="radio" name="boleto" id="boleto" value="boleto" checked>'+
-                                            'Boleto'+
-                                    '</label>'+
-                                '</div>'+
-                                '<div class="form-check disabledRadio">'+
-                                    '<label class="form-check-label">'+
-                                        '<input class="form-check-input" type="radio" name="credito" id="credito" value="credito" disabled>'+
-                                            'Cartão de Crédito'+
-                                    '</label>'+
-                                '</div>'+
-                                '<div class="form-check disabledRadio">'+
-                                    '<label class="form-check-label">'+
-                                        '<input class="form-check-input" type="radio" name="debito" id="debito" value="debito" disabled>'+
-                                            'Cartão de Débito'+
-                                    '</label>'+
-                                '</div>'+
-                                '<div class="input-group mt-2">'+
-                                    '<div class="input-group-prepend">'+
-                                        '<span class="input-group-text">Email</span>'+
-                                     '</div>'+
-                                    '<input type="email" class="form-control input-sm" id="inputEmail" aria-describedby="dataHelp" placeholder="Insira seu email">'+
-                                '</div>'+
-                                '<div class="input-group mt-2">'+
-                                    '<div class="input-group-prepend">'+
-                                        '<span class="input-group-text">Senha</span>'+
-                                     '</div>'+
-                                     '<input type="password" class="form-control input-sm" id="inputPassword" placeholder="Senha">'+
-                                '</div>'+
-                                '<div class="input-group mt-2">'+
-                                    '<div class="input-group-prepend">'+
-                                        '<span class="input-group-text">:)</span>'+
-                                     '</div>'+
-                                     '<input type="password" class="form-control input-sm" id="inputRepeatPassword" placeholder="Repita a senha">'+
-                                '</div>'+
+                            '<div class="mt-2">'+
+                            '<a class="btn btn-outline-secondary btn-sm" data-toggle="collapse" href="#subscribeForm" role="button" aria-expanded="false" aria-controls="subscribeForm">Cadastre-se <i class="fa fa-heart"></i></a>'+
+                            '</div>'+
+                                '<div class="form-group collapse" id="subscribeForm">'+
+                                    '<div class="m-1">'+
+                                        '<p>Formas de pagamento</p'+
+                                    '</div>'+
+                                    '<div class="form-check">'+
+                                        '<label class="form-check-label">'+
+                                            '<input class="form-check-input" type="radio" name="boleto" id="boleto" value="boleto" checked>'+
+                                                'Boleto'+
+                                        '</label>'+
+                                    '</div>'+
+                                    '<div class="form-check disabledRadio">'+
+                                        '<label class="form-check-label">'+
+                                            '<input class="form-check-input" type="radio" name="credito" id="credito" value="credito" disabled>'+
+                                                'Cartão de Crédito'+
+                                        '</label>'+
+                                    '</div>'+
+                                    '<div class="form-check disabledRadio">'+
+                                        '<label class="form-check-label">'+
+                                            '<input class="form-check-input" type="radio" name="debito" id="debito" value="debito" disabled>'+
+                                                'Cartão de Débito'+
+                                        '</label>'+
+                                    '</div>'+
+                                    '<div class="input-group mt-2">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text">Email</span>'+
+                                        '</div>'+
+                                        '<input type="email" class="form-control input-sm" id="inputEmail" aria-describedby="dataHelp" placeholder="Insira seu email">'+
+                                    '</div>'+
+                                    '<div class="input-group mt-2">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text">Senha</span>'+
+                                        '</div>'+
+                                        '<input type="password" class="form-control input-sm" id="inputPassword" placeholder="Senha">'+
+                                    '</div>'+
+                                    '<div class="input-group mt-2">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text">:)</span>'+
+                                        '</div>'+
+                                        '<input type="password" class="form-control input-sm" id="inputRepeatPassword" placeholder="Repita a senha">'+
+                                    '</div>'+
 
                                     '<small id="dataHelp" class="form-text text-muted">Seus dados estão seguros conosco :)</small>'+
-                                    ''+
-                            '<div class="input-group mt-2">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text">Nome</span>'+
+                                        ''+
+                                    '<div class="input-group mt-2">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text">Nome</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control input-sm" id="name" aria-describedby="" placeholder="Insira seu nome">'+
+                                    '</div>'+    
+                                    '<div class="input-group mt-2">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text">Endereço</span>'+
+                                        '</div>'+
+                                        '<input type="text" aria-label="rua" class="form-control" id="rua" placeholder="Rua, avenida...">'+
+                                        '<input type="number" aria-label="numero" class="form-control" id="numero" placeholder="número">'+
+                                        '<input type="text" aria-label="complemento" class="form-control" id="complemento" placeholder="Complemento">'+
+                                    '</div>'+
+                                    '<div class="input-group mt-2">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text">CEP</span>'+
+                                        '</div>'+
+                                        '<input type="text" aria-label="rua" class="form-control" id="cep" placeholder="Insira seu cep...">'+
                                 '</div>'+
-                                '<input type="text" class="form-control input-sm" id="name" aria-describedby="" placeholder="Insira seu nome">'+
-                            '</div>'+    
-                            '<div class="input-group mt-2">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text">Endereço</span>'+
-                                '</div>'+
-                                '<input type="text" aria-label="rua" class="form-control" id="rua" placeholder="Rua, avenida...">'+
-                                '<input type="number" aria-label="numero" class="form-control" id="numero" placeholder="número">'+
-                                '<input type="text" aria-label="complemento" class="form-control" id="complemento" placeholder="Complemento">'+
-                            '</div>'+
-                            '<div class="input-group mt-2">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text">CEP</span>'+
-                                '</div>'+
-                                '<input type="text" aria-label="rua" class="form-control" id="cep" placeholder="Insira seu cep...">'+
-                            '</div>'+
 
-                            '</div>'+    
+                            '</div>'+
+                        '</div>'+ 
                                 
                         '</form>'+
                     '</div>'+
@@ -480,4 +491,38 @@ function finishCartForGood(){
         setTimeout(function(){
             $("#holdOn").fadeIn();
         },9000); 
+}
+
+function navbar(){
+      // Custom 
+  var stickyToggle = function(sticky, stickyWrapper, scrollElement) {
+    var stickyHeight = sticky.outerHeight();
+    var stickyTop = stickyWrapper.offset().top;
+    if (scrollElement.scrollTop() >= stickyTop){
+      stickyWrapper.height(stickyHeight);
+      sticky.addClass("is-sticky");
+    }
+    else{
+      sticky.removeClass("is-sticky");
+      stickyWrapper.height('auto');
+    }
+  };
+  
+  $('[data-toggle="sticky-onscroll"]').each(function() {
+    var sticky = $(this);
+    var stickyWrapper = $('<div>').addClass('sticky-wrapper'); // insert hidden element to maintain actual top offset on page
+    sticky.before(stickyWrapper);
+    sticky.addClass('sticky');
+    
+    // Scroll & resize events
+    $(window).on('scroll.sticky-onscroll resize.sticky-onscroll', function() {
+      stickyToggle(sticky, stickyWrapper, $(this));
+    });
+    
+    // On page load
+    stickyToggle(sticky, stickyWrapper, $(window));
+  });
+}
+function closeModal(name){
+    $(name).modal('hide');
 }
